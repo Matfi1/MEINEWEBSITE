@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceCards = document.querySelectorAll('.service-card');
     const serviceDetails = document.getElementById('service-details');
     const newsFeed = document.getElementById('news-feed');
+    const contentSections = document.querySelectorAll('.content');
 
     // Load saved theme
     const savedTheme = localStorage.getItem('theme');
@@ -67,4 +68,23 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Vielen Dank für Ihre Nachricht! Wir werden uns bald bei Ihnen melden.');
         contactForm.reset(); // Reset form
     });
+
+    // Function to handle scroll-based hiding/showing of elements
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY + window.innerHeight;
+        contentSections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+            if (scrollPosition > sectionTop) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        });
+    };
+
+    // Initial check
+    handleScroll();
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
 });
