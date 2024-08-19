@@ -1,90 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleButton = document.getElementById('theme-toggle');
-    const contactForm = document.getElementById('contact-form');
-    const serviceCards = document.querySelectorAll('.service-card');
-    const serviceDetails = document.getElementById('service-details');
-    const newsFeed = document.getElementById('news-feed');
-    const contentSections = document.querySelectorAll('.content');
 
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.body.classList.add(savedTheme);
-        if (savedTheme === 'dark-theme') {
-            themeToggleButton.classList.add('dark');
+### 3. **JavaScript (script.js)**
+
+```javascript
+// Mobile menu toggle
+const menuToggle = document.getElementById('mobile-menu');
+const navList = document.getElementById('nav-list');
+
+menuToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+});
+
+// Animation on scroll
+const fadeInElements = document.querySelectorAll('.fade-in, .slide-in, .fade-in-up');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
         }
-    }
-
-    themeToggleButton.addEventListener('click', () => {
-        const isDarkTheme = document.body.classList.toggle('dark-theme');
-        localStorage.setItem('theme', isDarkTheme ? 'dark-theme' : 'light-theme');
-        themeToggleButton.classList.toggle('dark', isDarkTheme);
     });
+}, {
+    threshold: 0.1
+});
 
-    serviceCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const service = card.dataset.service;
-            fetch(`/api/services/${service}`)
-                .then(response => response.json())
-                .then(data => {
-                    serviceDetails.innerHTML = `
-                        <h3>${data.title}</h3>
-                        <p>${data.description}</p>
-                        <p>Preis: ${data.price} EUR</p>
-                    `;
-                })
-                .catch(error => {
-                    serviceDetails.innerHTML = `<p>Fehler beim Laden der Details.</p>`;
-                    console.error('Fehler beim Laden der Details:', error);
-                });
-        });
-    });
-
-    // Load news feed from external API
-    fetch('https://api.example.com/news') // Replace with a real API endpoint
-        .then(response => response.json())
-        .then(data => {
-            newsFeed.innerHTML = data.articles.map(article => `
-                <div class="news-item">
-                    <h3>${article.title}</h3>
-                    <p>${article.summary}</p>
-                    <a href="${article.url}" target="_blank">Weiterlesen</a>
-                </div>
-            `).join('');
-        })
-        .catch(error => {
-            newsFeed.innerHTML = `<p>Fehler beim Laden der Nachrichten.</p>`;
-            console.error('Fehler beim Laden der Nachrichten:', error);
-        });
-
-    contactForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent default form submission
-        const formData = new FormData(contactForm);
-        const formObject = Object.fromEntries(formData.entries());
-
-        // Log form data to the console (simulating form submission)
-        console.log('Form submitted with:', formObject);
-        
-        alert('Vielen Dank für Ihre Nachricht! Wir werden uns bald bei Ihnen melden.');
-        contactForm.reset(); // Reset form
-    });
-
-    // Function to handle scroll-based hiding/showing of elements
-    const handleScroll = () => {
-        const scrollPosition = window.scrollY + window.innerHeight;
-        contentSections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-            if (scrollPosition > sectionTop) {
-                section.classList.remove('hidden');
-            } else {
-                section.classList.add('hidden');
-            }
-        });
-    };
-
-    // Initial check
-    handleScroll();
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
+fadeInElements.forEach(element => {
+    observer.observe(element);
 });
