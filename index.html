@@ -3,104 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professionelle Webseite</title>
+    <title>Moderne Webdesign</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Professionelle Webseite</h1>
-            <nav>
-                <a href="#home">Startseite</a>
-                <a href="#about">Über uns</a>
-                <a href="#services">Unsere Leistungen</a>
-                <a href="#news">Nachrichten</a>
-                <a href="#contact">Kontakt</a>
-                <button id="theme-toggle" aria-label="Wechseln Sie das Thema">Thema wechseln</button>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">Webseite</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#services">Dienstleistungen</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
     </header>
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h2>Willkommen auf unserer Webseite!</h2>
-                <p>Erleben Sie unsere professionellen Dienstleistungen und erfahren Sie mehr über uns.</p>
-                <a href="#services" class="cta-button">Unsere Leistungen ansehen</a>
+
+    <section id="home" class="fade-in">
+        <h1>Willkommen auf unserer modernen Webseite</h1>
+        <p>Entdecken Sie unser responsives und dynamisches Design.</p>
+        <button class="btn glow-on-hover">Mehr erfahren</button>
+    </section>
+
+    <section id="about" class="slide-in">
+        <h2>Über uns</h2>
+        <p>Wir sind ein kreatives Team, das sich auf moderne Weblösungen spezialisiert hat.</p>
+    </section>
+
+    <section id="services" class="fade-in-up">
+        <h2>Dienstleistungen</h2>
+        <p>Wir bieten eine Vielzahl von Dienstleistungen an, die auf Ihre Bedürfnisse zugeschnitten sind.</p>
+        <div class="card-container">
+            <div class="card">
+                <h3>Webdesign</h3>
+                <p>Kreative und funktionale Webseiten.</p>
+                <button class="btn card-btn">Mehr erfahren</button>
             </div>
-        </section>
-        <section id="about" class="content">
-            <div class="container">
-                <h2>Über uns</h2>
-                <p>Wir sind ein Team von Fachleuten, die sich auf hochwertige Webentwicklung spezialisiert haben. Unser Ziel ist es, Ihnen Lösungen von höchster Qualität zu bieten.</p>
-                <div class="team">
-                    <div class="team-member">
-                        <img src="https://via.placeholder.com/150" alt="Teammitglied 1">
-                        <h3>Max Mustermann</h3>
-                        <p>Lead Developer</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="https://via.placeholder.com/150" alt="Teammitglied 2">
-                        <h3>Julia Müller</h3>
-                        <p>UX/UI Designer</p>
-                    </div>
-                    <div class="team-member">
-                        <img src="https://via.placeholder.com/150" alt="Teammitglied 3">
-                        <h3>Hans Schmidt</h3>
-                        <p>SEO-Spezialist</p>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>Entwicklung</h3>
+                <p>Hochwertige Webanwendungen.</p>
+                <button class="btn card-btn">Mehr erfahren</button>
             </div>
-        </section>
-        <section id="services" class="content">
-            <div class="container">
-                <h2>Unsere Leistungen</h2>
-                <div class="service-cards">
-                    <div class="service-card" data-service="webdesign">
-                        <h3>Webdesign</h3>
-                        <p>Modernes und benutzerfreundliches Design für Ihre Webseite.</p>
-                    </div>
-                    <div class="service-card" data-service="webentwicklung">
-                        <h3>Webentwicklung</h3>
-                        <p>Robuste und skalierbare Weblösungen für Ihr Unternehmen.</p>
-                    </div>
-                    <div class="service-card" data-service="seo">
-                        <h3>SEO-Optimierung</h3>
-                        <p>Verbessern Sie Ihre Sichtbarkeit in Suchmaschinen und ziehen Sie mehr Besucher an.</p>
-                    </div>
-                </div>
-                <div id="service-details" class="service-details">
-                    <!-- Details will be dynamically injected here -->
-                </div>
+            <div class="card">
+                <h3>SEO</h3>
+                <p>Optimierung für Suchmaschinen.</p>
+                <button class="btn card-btn">Mehr erfahren</button>
             </div>
-        </section>
-        <section id="news" class="content">
-            <div class="container">
-                <h2>Nachrichten</h2>
-                <div id="news-feed" class="news-feed">
-                    <!-- News items will be dynamically injected here -->
-                </div>
-            </div>
-        </section>
-        <section id="contact" class="content">
-            <div class="container">
-                <h2>Kontakt</h2>
-                <form id="contact-form">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">E-Mail:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Nachricht:</label>
-                    <textarea id="message" name="message" required></textarea>
-                    <button type="submit">Absenden</button>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Professionelle Webseite. Alle Rechte vorbehalten.</p>
         </div>
+    </section>
+
+    <section id="contact" class="slide-in">
+        <h2>Kontakt</h2>
+        <p>Wir würden uns freuen, von Ihnen zu hören.</p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Nachricht:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit" class="btn glow-on-hover">Senden</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Alle Rechte vorbehalten. Gestaltet von Ihrem kreativen Team.</p>
     </footer>
-    <script src="script.js" defer></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
